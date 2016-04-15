@@ -31,7 +31,7 @@ gulp.task('sass', function() {
     return gulp.src("assets/styles/styles.scss")
         .pipe(sass().on('error', sass.logError))
         .pipe(postcss(processors))
-        .pipe(gulp.dest("styles"))
+        .pipe(gulp.dest("assets/styles"))
         .pipe(browserSync.stream());
 });
 
