@@ -5,18 +5,20 @@ var gulp            = require('gulp'),
     browserSync     = require('browser-sync').create(),
     sass            = require('gulp-sass'),
 
+    // CHANGE THEME NAME FOR BROWSERSYNC PROXY
     themeName       = "THEME-NAME-HERE";
 
 // Static Server + watching scss/html files
 gulp.task('serve', ['sass'], function() {
 
     browserSync.init({
-        proxy: "local." + themeName
+        proxy: themeName
     });
 
-    gulp.watch("wp-content/themes/" + themeName + "/styles/*.scss", ['sass']);
-    gulp.watch("wp-content/themes/" + themeName + "/styles/*/*.scss", ['sass']);
-    gulp.watch("wp-content/themes/" + themeName + "/*.php").on('change', browserSync.reload);
+    gulp.watch("assets/styles/styles.scss", ['sass']);
+    gulp.watch("assets/styles/*/*.scss", ['sass']);
+    gulp.watch("assets/styles/*/*/*.scss", ['sass']);
+    gulp.watch("/*.php").on('change', browserSync.reload);
 
 });
 
@@ -26,10 +28,10 @@ gulp.task('sass', function() {
     var processors = [
     autoprefixer
     ];
-    return gulp.src("wp-content/themes/" + themeName + "/styles/styles.scss")
+    return gulp.src("assets/styles/styles.scss")
         .pipe(sass().on('error', sass.logError))
         .pipe(postcss(processors))
-        .pipe(gulp.dest("wp-content/themes/" + themeName + "/styles"))
+        .pipe(gulp.dest("styles"))
         .pipe(browserSync.stream());
 });
 
