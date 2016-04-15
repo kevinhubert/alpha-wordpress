@@ -1,0 +1,15 @@
+#IGNORE EVERYTHING
+/*
+
+#DONT IGNORE .gitignore and readme.md
+!.gitignore
+!README.md
+
+#DONT IGNORE DEV DEVENDENCIES
+!package.json
+!gulpfile.js
+
+#DONT IGNORE wp-content
+!wp-content/
+
+#IGNORE EVERYTHING IN wp-content EXCEPT themes
